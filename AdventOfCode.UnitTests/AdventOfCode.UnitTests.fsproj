@@ -9,9 +9,19 @@
 
     <ItemGroup>
         <Compile Include="Puzzles\Day00Should.fs" />
+        <Compile Include="Puzzles\Day01Should.fs" />
+        <Content Include="Puzzles\Day01TestInput.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+
+
+        <Compile Include="Common\DataAccessShould.fs" />
+
+        <Content Include="Common\testfile.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
 
         <Compile Include="Program.fs" />
-       
     </ItemGroup>
 
     <ItemGroup>
