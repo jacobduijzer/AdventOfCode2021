@@ -18,7 +18,6 @@ public class Day07Should
         // ASSERT
         Assert.NotNull(result);
         Assert.Equal(37, result);
-        
     }
 
     [Fact]
@@ -32,7 +31,7 @@ public class Day07Should
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(356992, result);
+        Assert.Equal(356990, result);
     }
     
     [Fact]
@@ -61,6 +60,6 @@ public class Day07Should
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(101268110, result);
+        Assert.Equal(101267361, result);
     }
 }
