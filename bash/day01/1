@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-input=$0
-sum=0; for i in $(input); do ((sum += i)); done; echo $sum
-
