@@ -21,6 +21,10 @@
         <Content Include="Puzzles\Day07TestInput.txt">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <Content Include="Puzzles\Day04TestInput.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Compile Include="Puzzles\Day04Should.fs" />
 
 
         <Compile Include="Common\DataAccessShould.fs" />
