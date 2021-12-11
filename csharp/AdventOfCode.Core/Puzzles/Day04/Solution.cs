@@ -1,6 +1,8 @@
+using AdventOfCode.Core.Common;
+
 namespace AdventOfCode.Core.Puzzles.Day04;
 
-public class Solution
+public class Solution : PuzzleBase
 {
     private readonly int[] _bingoNumbers;
     private readonly string[] _cardInput;
@@ -16,7 +18,7 @@ public class Solution
             .ToArray();
     }
 
-    public object SolvePart1(string inputFile)
+    public override object SolvePart1()
     {
         var numberOfCards = _cardInput.Length / 5;
 
@@ -34,7 +36,7 @@ public class Solution
         return gameService;
     }
 
-    public object SolvePart2(string inputFile)
+    public override object SolvePart2()
     {
         var numberOfCards = _cardInput.Length / 5;
 

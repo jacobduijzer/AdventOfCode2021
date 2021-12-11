@@ -15,7 +15,7 @@ public class Day04Should
         var day04 = new Solution(filePath);
         
         // ACT
-        GameService result = (GameService)day04.SolvePart1(filePath);
+        GameService result = (GameService)day04.SolvePart1();
 
         // ASSERT
         Assert.NotNull(result);
@@ -32,7 +32,7 @@ public class Day04Should
         var day04 = new Solution(filePath);
             
         // ACT
-        GameService result = (GameService)day04.SolvePart2(filePath);
+        GameService result = (GameService)day04.SolvePart2();
         
         // ASSERT
         Assert.NotNull(result);

@@ -1,8 +1,9 @@
-namespace AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Common;
 
-public class Day11
+namespace AdventOfCode.Core.Puzzles.Day11;
+
+public class Day11 : PuzzleBase<Octopus[,]>
 {
-    public readonly Octopus[,] Grid;
     public readonly int MaxRows;
     public readonly int MaxColumns;
 
@@ -20,17 +21,14 @@ public class Day11
         MaxRows = lines.Length;
         MaxColumns = lines[0].Length;
 
-        Grid = new Octopus[MaxRows, MaxColumns];
-        for (var row = 0; row < MaxRows; row++)
-        for (var column = 0; column < MaxColumns; column++)
-            Grid[row, column] = new Octopus(int.Parse(lines[row][column].ToString()));
+        Input = ParseInput(lines);
     }
 
-    public object SolvePart1(int numberOfRuns)
+    public override object SolvePart1()
     {
         var numberOfFlashes = 0;
 
-        for (int run = 0; run < numberOfRuns; run++)
+        for (int run = 0; run < 100; run++)
         {
             Queue<(int X, int Y)> queue = new();
             ISet<(int X, int Y)> flashedOctopi = new HashSet<(int X, int Y)>();
@@ -43,7 +41,7 @@ public class Day11
         return numberOfFlashes;
     }
 
-    public object SolvePart2()
+    public override object SolvePart2()
     {
         var step = 0;
 
@@ -67,7 +65,7 @@ public class Day11
     {
         for (var row = 0; row < MaxRows; row++)
         for (var column = 0; column < MaxColumns; column++)
-            if (Grid[row, column].IncreaseLevel() > 9)
+            if (Input[row, column].IncreaseLevel() > 9)
             {
                 queue.Enqueue((column, row));
                 flashedOctopi.Add((column, row));
@@ -79,36 +77,28 @@ public class Day11
         while (queue.Count > 0)
         {
             var flashingOctopus = queue.Dequeue();
-            Grid[flashingOctopus.Y, flashingOctopus.X].Reset();
+            Input[flashingOctopus.Y, flashingOctopus.X].Reset();
 
             foreach (var neighbour in _offsets
                          .Select(x => (X: x.X + flashingOctopus.X, Y: x.Y + flashingOctopus.Y))
-                         .Where(x => IsValidPoint(x.X, x.Y)))
+                         .Where(x => GridHelper.IsValidPoint(x.X, x.Y, MaxColumns, MaxRows)))
             {
                 if (flashedOctopi.Contains(neighbour)) continue;
-                if (Grid[neighbour.Y, neighbour.X].IncreaseLevel() <= 9) continue;
+                if (Input[neighbour.Y, neighbour.X].IncreaseLevel() <= 9) continue;
                 
                 queue.Enqueue(neighbour);
                 flashedOctopi.Add(neighbour);
             }
         }
     }
-    
-    private bool IsValidPoint(int column, int row) =>
-        0 <= column && column < MaxColumns && 0 <= row && row < MaxRows;
-}
 
-public class Octopus
-{
-    private int _level = 0;
-
-    public Octopus(int startValue) => _level = startValue;
-
-    public int IncreaseLevel()
+    public sealed override Octopus[,] ParseInput(string[] lines)
     {
-        _level++;
-        return _level;
-    }
+        var grid = new Octopus[MaxRows, MaxColumns];
+        for (var row = 0; row < MaxRows; row++)
+        for (var column = 0; column < MaxColumns; column++)
+            grid[row, column] = new Octopus(int.Parse(lines[row][column].ToString()));
 
-    public void Reset() => _level = 0;
+        return grid;
+    }
 }
