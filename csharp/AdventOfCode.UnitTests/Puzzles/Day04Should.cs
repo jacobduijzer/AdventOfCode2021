@@ -7,51 +7,37 @@ namespace AdventOfCode.UnitTests.Puzzles;
 
 public class Day04Should
 {
-    [Fact]
-    public void SolvePart1Test()
+    [Theory]
+    [InlineData("testinput/day04.txt", 24, 4512)]
+    [InlineData("input/day04.txt", 95, 72770)]
+    public void SolvePart1(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        GameService result = (GameService)new Day04().SolvePart1("Puzzles/Day04TestInput.txt");
+        var day04 = new Day04(filePath);
+        
+        // ACT
+        GameService result = (GameService)day04.SolvePart1(filePath);
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(24, result.Winners.First().LastNumber);
-        Assert.Equal(4512, result.Winners.First().GetScore());
+        Assert.Equal(lastNumber, result.Winners.First().LastNumber);
+        Assert.Equal(score, result.Winners.First().GetScore());
     }
     
-    [Fact]
-    public void SolvePart1()
+    [Theory]
+    [InlineData("testinput/day04.txt", 13, 1924)]
+    [InlineData("input/day04.txt", 47, 13912)]
+    public void SolvePart2(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        GameService result = (GameService)new Day04().SolvePart1("Puzzles/Day04Input.txt");
-
+        var day04 = new Day04(filePath);
+            
+        // ACT
+        GameService result = (GameService)day04.SolvePart2(filePath);
+        
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(95, result.Winners.First().LastNumber);
-        Assert.Equal(72770, result.Winners.First().GetScore());
-    }
-    
-    [Fact]
-    public void SolvePart2Test()
-    {
-        // ARRANGE
-        GameService result = (GameService)new Day04().SolvePart2("Puzzles/Day04TestInput.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(13, result.Winners.Last().LastNumber);
-        Assert.Equal(1924, result.Winners.Last().GetScore());
-    }
-    
-    [Fact]
-    public void SolvePart2()
-    {
-        // ARRANGE
-        GameService result = (GameService)new Day04().SolvePart2("Puzzles/Day04Input.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(47, result.Winners.Last().LastNumber);
-        Assert.Equal(13912, result.Winners.Last().GetScore());
+        Assert.Equal(lastNumber, result.Winners.Last().LastNumber);
+        Assert.Equal(score, result.Winners.Last().GetScore());
     }
 }
