@@ -63,8 +63,4 @@ namespace AdventOfCode.Core.Puzzles.Day05
             return new Line(point1, point2);
         }
     }
-
-    public record Line(Point Start, Point End);
-
-    public record Point(int X, int Y);
 }
