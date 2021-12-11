@@ -1,4 +1,4 @@
-namespace AdventOfCode.Core.Puzzles.Day04Code;
+namespace AdventOfCode.Core.Puzzles.Day04;
 
 public class GameService
 {

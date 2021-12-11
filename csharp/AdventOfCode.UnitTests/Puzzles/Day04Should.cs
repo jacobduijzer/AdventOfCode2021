@@ -1,6 +1,5 @@
 using System.Linq;
-using AdventOfCode.Core.Puzzles;
-using AdventOfCode.Core.Puzzles.Day04Code;
+using AdventOfCode.Core.Puzzles.Day04;
 using Xunit;
 
 namespace AdventOfCode.UnitTests.Puzzles;
@@ -13,7 +12,7 @@ public class Day04Should
     public void SolvePart1(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        var day04 = new Day04(filePath);
+        var day04 = new Solution(filePath);
         
         // ACT
         GameService result = (GameService)day04.SolvePart1(filePath);
@@ -30,7 +29,7 @@ public class Day04Should
     public void SolvePart2(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        var day04 = new Day04(filePath);
+        var day04 = new Solution(filePath);
             
         // ACT
         GameService result = (GameService)day04.SolvePart2(filePath);

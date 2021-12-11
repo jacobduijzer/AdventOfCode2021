@@ -1,13 +1,11 @@
-using AdventOfCode.Core.Puzzles.Day04Code;
+namespace AdventOfCode.Core.Puzzles.Day04;
 
-namespace AdventOfCode.Core.Puzzles;
-
-public class Day04
+public class Solution
 {
     private readonly int[] _bingoNumbers;
     private readonly string[] _cardInput;
 
-    public Day04(string inputFile)
+    public Solution(string inputFile)
     {
         var input = File.ReadAllLines(inputFile);
         _bingoNumbers = input[0].Split(',').Select(x => int.Parse(x)).ToArray();
