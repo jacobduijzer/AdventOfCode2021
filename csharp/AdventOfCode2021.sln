@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.ConsoleApplication", "AdventOfCode.ConsoleApplication\AdventOfCode.ConsoleApplication.csproj", "{72726001-7A0D-47DA-8DB8-BB03F9BEA6ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +31,9 @@ Global
 		{86DE0763-9349-4CD9-B2EE-F21FD866F23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86DE0763-9349-4CD9-B2EE-F21FD866F23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86DE0763-9349-4CD9-B2EE-F21FD866F23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72726001-7A0D-47DA-8DB8-BB03F9BEA6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72726001-7A0D-47DA-8DB8-BB03F9BEA6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72726001-7A0D-47DA-8DB8-BB03F9BEA6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72726001-7A0D-47DA-8DB8-BB03F9BEA6ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
