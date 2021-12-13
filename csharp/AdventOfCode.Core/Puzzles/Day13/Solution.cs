@@ -20,17 +20,21 @@ public class Solution : PuzzleBase
     public override object SolvePart2()
     {
         var newGrid = _grid.HandleFolds(_grid.Folds);
+        return CreateOutputString(newGrid);
+    }
 
-        var columns = newGrid.Max(p => p.X);
-        var ro = newGrid.Max(p => p.Y);
+    private string CreateOutputString(HashSet<(int X, int Y)> grid)
+    {
+        var columns = grid.Max(p => p.X);
+        var row = grid.Max(p => p.Y);
 
         var sb = new StringBuilder();
         sb.AppendLine();
 
-        for (var y = 0; y <= ro; y++)
+        for (var y = 0; y <= row; y++)
         {
             for (var x = 0; x <= columns; x++)
-                sb.Append(newGrid.Contains((x, y)) ? "█" : ".");
+                sb.Append(grid.Contains((x, y)) ? "█" : ".");
 
             sb.AppendLine();
         }
