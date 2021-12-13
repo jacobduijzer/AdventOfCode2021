@@ -1,4 +1,5 @@
-﻿using AdventOfCode.Core.Puzzles.Day13;
+﻿using Solution = AdventOfCode.Core.Puzzles.Day13.Solution;
 
 var day13 = new Solution("Input/day13.txt");
-Console.WriteLine(day13.SolvePart2());
+var outputText = day13.SolvePart2();
+Console.WriteLine(outputText);
