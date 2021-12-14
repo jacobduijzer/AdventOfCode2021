@@ -23,7 +23,7 @@ public class Solution : PuzzleBase
     public override object SolvePart2()
     {
         var newGrid = _grid.HandleFolds(_grid.Folds);
-        CreateBitmap(newGrid);
+        // CreateBitmap(newGrid);
         return CreateOutputString(newGrid);
     }
 
