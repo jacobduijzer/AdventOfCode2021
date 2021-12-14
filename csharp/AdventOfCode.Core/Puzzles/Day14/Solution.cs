@@ -54,23 +54,23 @@ public class Solution : PuzzleBase
     public override object SolvePart2()
     {
         Enumerable.Range(0, 30).ToList().ForEach(i => GrowPolymers());
-        return _counts.Max(kv => kv.Value) - _counts.Min(kv => kv.Value);
+        return _counts.Max(count => count.Value) - _counts.Min(count => count.Value);
     }
 
     private string HandleString(string startString)
     {
-        Queue<QueueItem> myQueue = new Queue<QueueItem>();
+        Queue<QueueItem> myQueue = new ();
         var al = new ArrayList();
         for (var i = 0; i < startString.Length; i++)
             al.Insert(i, startString[i]);
 
         for (var i = 0; i < al.Count; i++)
         {
-            if (i + 1 < al.Count)
-            {
-                if (_insertionRules.TryGetValue($"{al[i]}{al[i + 1]}", out var replaceChar))
-                    myQueue.Enqueue(new QueueItem(i + 1 + myQueue.Count, replaceChar));
-            }
+            if (i + 1 >= al.Count) 
+                continue;
+            
+            if (_insertionRules.TryGetValue($"{al[i]}{al[i + 1]}", out var replaceChar))
+                myQueue.Enqueue(new QueueItem(i + 1 + myQueue.Count, replaceChar));
         }
 
         var newString = HandleQueue(myQueue, al);
@@ -82,8 +82,8 @@ public class Solution : PuzzleBase
     {
         while (myQueue.Count > 0)
         {
-            var item = myQueue.Dequeue();
-            al.Insert(item.Index, item.InsertChar);
+            var (index, insertChar) = myQueue.Dequeue();
+            al.Insert(index, insertChar);
         }
 
         return al.ToArray().Select(x => x).Aggregate(string.Concat)?.ToString() ?? string.Empty;
