@@ -25,6 +25,7 @@
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
         <Compile Include="Puzzles\Day04Should.fs" />
+        <Compile Include="Puzzles\Day03Should.fs" />
 
 
         <Compile Include="Common\DataAccessShould.fs" />
@@ -34,6 +35,10 @@
         </Content>
 
         <Compile Include="Program.fs" />
+
+        <Content Include="TestInput\day03.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>

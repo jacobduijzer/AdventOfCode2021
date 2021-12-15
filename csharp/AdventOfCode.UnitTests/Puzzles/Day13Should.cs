@@ -7,7 +7,7 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day13Should
 {
    [Theory]
-   [InlineData("testinput/day13.txt", 17)]
+   [InlineData("TestInput/day13.txt", 17)]
    [InlineData("Input/day13.txt", 693)]
    public void CountCorrectDotsAfterFolding(string inputFile, int visibleDots)
    {
@@ -23,7 +23,7 @@ public class Day13Should
    }
    
    [Theory]
-   [InlineData("testinput/day13.txt", 16, 9)]
+   [InlineData("TestInput/day13.txt", 16, 9)]
    [InlineData("Input/day13.txt", 95, 139)]
    public void CalculateTheCorrectCode(string inputFile, int visibleHashes, int visibleDots)
    {
@@ -35,7 +35,7 @@ public class Day13Should
 
       // ASSERT
       Assert.NotNull(result);
-      Assert.Equal(visibleHashes, result.ToString().Count(x => x == '█'));
-      Assert.Equal(visibleDots, result.ToString().Count(x => x == '.'));
+      Assert.Equal(visibleHashes, result.ToString().Count(x => x == Solution.Character));
+      Assert.Equal(visibleDots, result.ToString().Count(x => x == Solution.EmptyCharacter));
    }
 }

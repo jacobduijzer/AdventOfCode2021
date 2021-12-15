@@ -8,6 +8,9 @@ namespace AdventOfCode.Core.Puzzles.Day13;
 
 public class Solution : PuzzleBase
 {
+    public const char Character = '#';
+    public const char EmptyCharacter = '.';
+    
     private readonly Grid _grid;
 
     public Solution(string inputFile)
@@ -38,7 +41,7 @@ public class Solution : PuzzleBase
         for (var y = 0; y <= row; y++)
         {
             for (var x = 0; x <= columns; x++)
-                sb.Append(grid.Contains((x, y)) ? "#" : " ");
+                sb.Append(grid.Contains((x, y)) ? Character : EmptyCharacter);
 
             sb.AppendLine();
         }

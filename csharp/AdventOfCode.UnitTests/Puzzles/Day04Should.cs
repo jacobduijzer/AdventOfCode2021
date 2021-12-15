@@ -7,8 +7,8 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day04Should
 {
     [Theory]
-    [InlineData("testinput/day04.txt", 24, 4512)]
-    [InlineData("input/day04.txt", 95, 72770)]
+    [InlineData("TestInput/day04.txt", 24, 4512)]
+    [InlineData("Input/day04.txt", 95, 72770)]
     public void SolvePart1(string filePath, int lastNumber, int score)
     {
         // ARRANGE
@@ -24,8 +24,8 @@ public class Day04Should
     }
     
     [Theory]
-    [InlineData("testinput/day04.txt", 13, 1924)]
-    [InlineData("input/day04.txt", 47, 13912)]
+    [InlineData("TestInput/day04.txt", 13, 1924)]
+    [InlineData("Input/day04.txt", 47, 13912)]
     public void SolvePart2(string filePath, int lastNumber, int score)
     {
         // ARRANGE

@@ -6,7 +6,7 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day14Should
 {
     [Theory]
-    [InlineData("testinput/day14.txt", 1588)]
+    [InlineData("TestInput/day14.txt", 1588)]
     [InlineData("Input/day14.txt", 2891)]
     public void GrowPolymer(string inputFile, int expectedResult)
     {
@@ -22,7 +22,7 @@ public class Day14Should
     }
     
     [Theory]
-    [InlineData("testinput/day14.txt", 2108829309)]
+    [InlineData("TestInput/day14.txt", 2108829309)]
     [InlineData("Input/day14.txt", 4404244090)]
     public void GrowPolymerForPart2(string inputFile, long expectedResult)
     {

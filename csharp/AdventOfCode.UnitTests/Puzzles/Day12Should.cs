@@ -6,7 +6,7 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day12Should
 {
     [Theory]
-    [InlineData("testinput/day12.txt", 10)]
+    [InlineData("TestInput/day12.txt", 10)]
     [InlineData("Input/day12.txt", 3450)]
     public void FindCorrectNumberOfPath(string inputFile, int expectedPaths)
     {
@@ -23,7 +23,7 @@ public class Day12Should
     
     
     [Theory]
-    [InlineData("testinput/day12.txt", 10)]
+    [InlineData("TestInput/day12.txt", 10)]
     [InlineData("Input/day12.txt", 3450)]
     public void FindCorrectNumberOfPathWhenVisitedOnce(string inputFile, int expectedPaths)
     {

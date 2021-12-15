@@ -6,7 +6,7 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day11Should
 {
     [Theory]
-    [InlineData("testinput/day11.txt", 10, 10)]
+    [InlineData("TestInput/day11.txt", 10, 10)]
     public void ParseInputToGrid(string filePath, int width, int height)
     {
         var day11 = new Day11(filePath);
@@ -17,8 +17,8 @@ public class Day11Should
     }
     
     [Theory]
-    [InlineData("testinput/day11.txt", 1656)]
-    [InlineData("input/day11.txt", 1725)]
+    [InlineData("TestInput/day11.txt", 1656)]
+    [InlineData("Input/day11.txt", 1725)]
     public void SolvePart1(string filePath, int expectedNumberOfFlashes)
     {
         // ARRANGE
@@ -32,11 +32,10 @@ public class Day11Should
     }
     
     [Fact]
-    
     public void SolvePart2()
     {
         // ARRANGE
-        var day11 = new Day11("input/day11.txt");
+        var day11 = new Day11("Input/day11.txt");
 
         // ACT
         var result = day11.SolvePart2();
