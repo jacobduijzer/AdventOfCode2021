@@ -1,77 +1,39 @@
-using AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Puzzles.Day08;
 using Xunit;
 
 namespace AdventOfCode.UnitTests.Puzzles;
 
 public class Day08Should
 {
-    [Fact]
-    public void SolvePart1Test()
+    [Theory]
+    [InlineData("TestInput/day08.txt", 26)]
+    [InlineData("Input/day08.txt", 521)]
+    public void SolvePart1(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day8 = new Day08();
+        Solution day8 = new (inputFile);
 
         // ACT
-        var result = day8.SolvePart1("Puzzles/Day08TestInput.txt");
+        var result = day8.SolvePart1();
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(26, result);
+        Assert.Equal(expectedResult, result);
     }
 
-    [Fact]
-    public void SolvePart1()
+    [Theory]
+    [InlineData("TestInput/day08.txt", 61229)]
+    [InlineData("Input/day08.txt", 1016804)]
+    public void SolvePart2(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day8 = new Day08();
+        Solution day8 = new (inputFile);
 
         // ACT
-        var result = day8.SolvePart1("Puzzles/Day08Input.txt");
+        var result = day8.SolvePart2();
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(521, result);
-    }
-    
-    [Fact]
-    public void SolvePart2Test01()
-    {
-        // ARRANGE
-        var day8 = new Day08();
-
-        // ACT
-        var result = day8.SolvePart2("Puzzles/Day08TestInputPart2.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(5353, result);
-    }
-    
-    [Fact]
-    public void SolvePart2Test02()
-    {
-        // ARRANGE
-        var day8 = new Day08();
-
-        // ACT
-        var result = day8.SolvePart2("Puzzles/Day08TestInput.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(61229, result);
-    }
-
-    [Fact]
-    public void SolvePart2()
-    {
-        // ARRANGE
-        var day8 = new Day08();
-
-        // ACT
-        var result = day8.SolvePart2("Puzzles/Day08Input.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(1016804, result);
+        Assert.Equal(expectedResult, result);
     }
 }

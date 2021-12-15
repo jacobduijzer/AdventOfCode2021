@@ -1,22 +1,31 @@
-namespace AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Common;
 
-public class Day08
+namespace AdventOfCode.Core.Puzzles.Day08;
+
+public class Solution : PuzzleBase
 {
+    private readonly IEnumerable<Entry> _entries;
+
     record Entry(List<string> Signals, List<string> Outputs);
-    
-    public object SolvePart1(string inputFile)
+
+    public Solution(string inputFile)
+    {
+        _entries = GetEntries(inputFile);
+    }
+
+    public override object SolvePart1()
     {
         int[] lengths = {2, 3, 4, 7};
-        var count = GetEntries(inputFile)
+        var count = _entries
             .SelectMany(x => x.Outputs)
             .Count(y => lengths.Contains(y.Length));
 
         return count;
     }
 
-    public object SolvePart2(string inputFile)
+    public override object SolvePart2()
     {
-        var input = GetEntries(inputFile)
+        var input = _entries
             .Select(MapNumberToSignal)
             .Sum();
         return input;
