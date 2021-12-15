@@ -22,14 +22,9 @@ I have created a simple [`jq`](https://stedolan.github.io/jq/) [script](./polyba
 | 8   | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day08.cs)                                                                                                                  |
 | 9   | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day09.cs)                                                                                                                  |
 | 10  | TODO: merge from different laptop                                                                                                                                                                                           |
-<<<<<<< HEAD
 | 11  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day11/Solution.cs)                                                                                                         |
 | 12  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day12/Solution.cs)                                                                                                         |
 | 13  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day13/Solution.cs)                                                                                                         |
 | 14  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day14/Solution.cs)                                                                                                         |
 | 15  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day15/Solution.cs)                                                                                                         |
 |     |                                                                                                                                                                                                                             |
-=======
-| 11  | [C#](https://github.com/jacobduijzer/AdventOfCode2021/blob/main/csharp/AdventOfCode.Core/Puzzles/Day11.cs)                                                                                                                  |
-|     |                                                                                                                                                                                                                             |
->>>>>>> 1281b548c34fcf8753fc40c2b6c51db3f4fd3520
