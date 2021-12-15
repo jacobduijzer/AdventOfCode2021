@@ -1,65 +1,39 @@
-using System.Collections.Generic;
-using AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Puzzles.Day07;
 using Xunit;
 
 namespace AdventOfCode.UnitTests.Puzzles;
 
 public class Day07Should
 {
-    [Fact]
-    public void SolvePart1Test()
+    [Theory]
+    [InlineData("TestInput/day07.txt", 37)]
+    [InlineData("Input/day07.txt", 356990)]
+    public void SolvePart1(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day7 = new Day07();
+        var day7 = new Solution(inputFile);
 
         // ACT
-        var result = day7.SolvePart1("Puzzles/Day07TestInput.txt");
+        var result = day7.SolvePart1();
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(37, result);
-    }
-
-    [Fact]
-    public void SolvePart1()
-    {
-        // ARRANGE
-        var day7 = new Day07();
-
-        // ACT
-        var result = day7.SolvePart1("Puzzles/Day07Input.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(356990, result);
+        Assert.Equal(expectedResult, result);
     }
     
-    [Fact]
-    public void SolvePart2Test()
+    [Theory]
+    [InlineData("TestInput/day07.txt", 168)]
+    [InlineData("Input/day07.txt", 101267361)]
+    public void SolvePart2(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day7 = new Day07();
+        var day7 = new Solution(inputFile);
 
         // ACT
-        var result = day7.SolvePart2("Puzzles/Day07TestInput.txt");
+        var result = day7.SolvePart2();
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(168, result);
-        
-    }
-
-    [Fact]
-    public void SolvePart2()
-    {
-        // ARRANGE
-        var day7 = new Day07();
-
-        // ACT
-        var result = day7.SolvePart2("Puzzles/Day07Input.txt");
-
-        // ASSERT
-        Assert.NotNull(result);
-        Assert.Equal(101267361, result);
+        Assert.Equal(expectedResult, result);
     }
 }

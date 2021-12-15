@@ -1,6 +1,6 @@
-namespace AdventOfCode.Core.Puzzles;
+namespace AdventOfCode.Core.Puzzles.Day06;
 
-public class Day06
+public class Solution 
 {
     public object SolvePart1(int[] state, int numberOfDays)
     {
@@ -48,6 +48,4 @@ public class Day06
         
         return newState.Values.Sum();
     }
-    
-    
 }
