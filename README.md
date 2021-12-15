@@ -1,4 +1,4 @@
-![Build & Test](https://github.com/github/docs/actions/workflows/dotnet.yml/badge.svg)
+[![.NET](https://github.com/jacobduijzer/AdventOfCode2021/actions/workflows/dotnet.yml/badge.svg)](https://github.com/jacobduijzer/AdventOfCode2021/actions/workflows/dotnet.yml)
 
 # Advent Of Code 2021
 
