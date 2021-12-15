@@ -1,3 +1,5 @@
+![Build & Test](https://github.com/github/docs/actions/workflows/dotnet.yml/badge.svg)
+
 # Advent Of Code 2021
 
 ## Polybar script
