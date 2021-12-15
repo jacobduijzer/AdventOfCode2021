@@ -11,7 +11,7 @@ public class Day14Should
     public void GrowPolymer(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day14 = new Solution(inputFile);
+        Solution day14 = new (inputFile);
 
         // ACT
         var result = day14.SolvePart1();
@@ -27,7 +27,7 @@ public class Day14Should
     public void GrowPolymerForPart2(string inputFile, long expectedResult)
     {
         // ARRANGE
-        var day14 = new Solution(inputFile);
+        Solution day14 = new (inputFile);
 
         // ACT
         var result = day14.SolvePart2();

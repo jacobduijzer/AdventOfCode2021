@@ -12,7 +12,7 @@ public class Day13Should
    public void CountCorrectDotsAfterFolding(string inputFile, int visibleDots)
    {
       // ARRANGE
-      var day13 = new Solution(inputFile);
+      Solution day13 = new (inputFile);
 
       // ACT
       var result = day13.SolvePart1();
@@ -28,7 +28,7 @@ public class Day13Should
    public void CalculateTheCorrectCode(string inputFile, int visibleHashes, int visibleDots)
    {
       // ARRANGE
-      var day13 = new Solution(inputFile);
+      Solution day13 = new (inputFile);
 
       // ACT
       var result = day13.SolvePart2();

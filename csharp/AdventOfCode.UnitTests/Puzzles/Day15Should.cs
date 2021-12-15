@@ -11,7 +11,7 @@ public class Day15Should
     public void SolvePart1(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day15 = new Solution(inputFile);
+        Solution day15 = new (inputFile);
 
         // ACT
         var result = day15.SolvePart1();
@@ -27,7 +27,7 @@ public class Day15Should
     public void SolvePart2(string inputFile, int expectedResult)
     {
         // ARRANGE
-        var day15 = new Solution(inputFile);
+        Solution day15 = new (inputFile);
 
         // ACT
         var result = day15.SolvePart2();

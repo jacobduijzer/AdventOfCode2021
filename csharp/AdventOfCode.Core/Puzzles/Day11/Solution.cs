@@ -2,7 +2,7 @@ using AdventOfCode.Core.Common;
 
 namespace AdventOfCode.Core.Puzzles.Day11;
 
-public class Day11 : PuzzleBase<Octopus[,]>
+public class Solution : PuzzleBase<Octopus[,]>
 {
     public readonly int MaxRows;
     public readonly int MaxColumns;
@@ -14,7 +14,7 @@ public class Day11 : PuzzleBase<Octopus[,]>
         (1, -1), (1, 0), (1, 1)
     };
 
-    public Day11(string inputFile)
+    public Solution(string inputFile)
     {
         var lines = InputHelper.ReadLinesFromFile(inputFile);
 

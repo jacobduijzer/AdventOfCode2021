@@ -11,7 +11,7 @@ public class Day12Should
     public void FindCorrectNumberOfPath(string inputFile, int expectedPaths)
     {
         // ARRANGE
-        var day12 = new Solution(inputFile);
+        Solution day12 = new (inputFile);
 
         // ACT
         var result = day12.SolvePart1();
@@ -28,7 +28,7 @@ public class Day12Should
     public void FindCorrectNumberOfPathWhenVisitedOnce(string inputFile, int expectedPaths)
     {
         // ARRANGE
-        var day12 = new Solution(inputFile);
+        Solution day12 = new (inputFile);
 
         // ACT
         var result = day12.SolvePart2();

@@ -12,7 +12,7 @@ public class Day04Should
     public void SolvePart1(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        var day04 = new Solution(filePath);
+        Solution day04 = new (filePath);
         
         // ACT
         GameService result = (GameService)day04.SolvePart1();
@@ -29,7 +29,7 @@ public class Day04Should
     public void SolvePart2(string filePath, int lastNumber, int score)
     {
         // ARRANGE
-        var day04 = new Solution(filePath);
+        Solution day04 = new (filePath);
             
         // ACT
         GameService result = (GameService)day04.SolvePart2();
