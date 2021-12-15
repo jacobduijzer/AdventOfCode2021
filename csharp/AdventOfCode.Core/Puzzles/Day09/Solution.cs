@@ -1,14 +1,16 @@
-namespace AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Common;
 
-public class Day09
+namespace AdventOfCode.Core.Puzzles.Day09;
+
+public class Solution : PuzzleBase
 {
-    private int[,] _input;
-    private int _max_y;
-    private int _max_x;
+    private readonly int[,] _input;
+    private readonly int _max_y;
+    private readonly int _max_x;
 
     private readonly List<(int X, int Y)> _offsets = new List<(int X, int Y)> {(-1, 0), (0, 1), (0, -1), (1, 0)};
 
-    public Day09(string inputFile)
+    public Solution(string inputFile)
     {
         var lines = InputHelper.ReadLinesFromFile(inputFile);
         _max_y = lines.Length;
@@ -20,13 +22,13 @@ public class Day09
             _input[y, x] = int.Parse(lines[y][x].ToString());
     }
 
-    public object SolvePart1()
+    public override object SolvePart1()
     {
         var numbers = FindLowPoints();
         return numbers.Select(x => x.Value + 1).Sum();
     }
 
-    public object SolvePart2()
+    public override object SolvePart2()
     {
         var lowPoints = FindLowPoints();
         return lowPoints

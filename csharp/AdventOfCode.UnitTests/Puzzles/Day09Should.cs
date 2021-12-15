@@ -1,4 +1,4 @@
-using AdventOfCode.Core.Puzzles;
+using AdventOfCode.Core.Puzzles.Day09;
 using Xunit;
 
 namespace AdventOfCode.UnitTests.Puzzles;
@@ -6,12 +6,12 @@ namespace AdventOfCode.UnitTests.Puzzles;
 public class Day09Should
 {
     [Theory]
-    [InlineData("Puzzles/Day09TestInput.txt", 15)]
-    [InlineData("Puzzles/Day09Input.txt", 566)]
+    [InlineData("TestInput/day09.txt", 15)]
+    [InlineData("Input/day09.txt", 566)]
     public void SolvePart1(string filePath, int expectedResult)
     {
         // ARRANGE
-        var day9 = new Day09(filePath);
+        Solution day9 = new (filePath);
 
         // ACT
         var result = day9.SolvePart1();
@@ -22,12 +22,12 @@ public class Day09Should
     } 
     
     [Theory]
-    [InlineData("Puzzles/Day09TestInput.txt", 1134)]
-    [InlineData("Puzzles/Day09Input.txt", 891684)]
+    [InlineData("TestInput/day09.txt", 1134)]
+    [InlineData("Input/day09.txt", 891684)]
     public void SolvePart2(string filePath, int expectedResult)
     {
         // ARRANGE
-        var day9 = new Day09(filePath);
+        Solution day9 = new (filePath);
 
         // ACT
         var result = day9.SolvePart2();
