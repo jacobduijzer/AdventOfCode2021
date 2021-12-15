@@ -7,7 +7,7 @@ public class Day15Should
 {
     [Theory]
     [InlineData("testinput/day15.txt", 40)]
-    [InlineData("Input/day15.txt", 2891)]
+    [InlineData("Input/day15.txt", 388)]
     public void SolvePart1(string inputFile, int expectedResult)
     {
         // ARRANGE
@@ -22,8 +22,8 @@ public class Day15Should
     }
     
     [Theory]
-    [InlineData("testinput/day15.txt", 1588)]
-    [InlineData("Input/day15.txt", 2891)]
+    [InlineData("testinput/day15.txt", 315)]
+    [InlineData("Input/day15.txt", 2819)]
     public void SolvePart2(string inputFile, int expectedResult)
     {
         // ARRANGE

@@ -2,84 +2,87 @@ using AdventOfCode.Core.Common;
 
 namespace AdventOfCode.Core.Puzzles.Day15;
 
-public class Solution : PuzzleBase
+public class Solution : PuzzleBase<Dictionary<Point, int>>
 {
-    private int[,] _grid;
-    private readonly int _maxColumns;
-    private readonly int _maxRows;
+    public Solution(string inputFile) => 
+        Input = ParseInput(InputHelper.ReadLinesFromFile(inputFile));
 
-    /* 4 possible moves */
-    // private readonly int[] _dx = {0, -1, 1, 0};
-    // private readonly int[] _dy = {-1, 0, 0, 1};
+    public override object SolvePart1() => 
+        MinCost(Input);
 
-    private readonly List<(int X, int Y)> _offsets = new()
+    public override object SolvePart2() => 
+        MinCost(EnlargeGrid(Input));
+
+    private int MinCost(Dictionary<Point, int> grid)
     {
-        (-1, 0), (0, -1), (0, 1), (1, 0)
-    };
+        var startPoint = new Point(0, 0);
+        var endPoint = new Point(grid.Keys.MaxBy(p => p.X)!.X, grid.Keys.MaxBy(p => p.Y)!.Y);
 
-    record Cell(int Column, int Row, int Cost);
-
-    public Solution(string inputFile)
-    {
-        var lines = InputHelper.ReadLinesFromFile(inputFile);
-
-        _maxRows = lines.Length;
-        _maxColumns = lines[0].Length;
-        _grid = new int[_maxRows, _maxColumns];
-
-        for (var row = 0; row < _maxRows; row++)
-        for (var column = 0; column < _maxColumns; column++)
-            _grid[row, column] = int.Parse(lines[row][column].ToString());
-    }
-
-    public override object SolvePart1() =>
-        MinCost(_grid, _maxColumns, _maxRows);
-
-    public override object SolvePart2()
-    {
-        throw new NotImplementedException();
-    }
-
-    private int MinCost(int[,] grid, int lastX, int lastY)
-    {
-        var tempGrid = new int[_maxColumns, _maxRows];
-
-        var visited = new bool[_maxColumns, _maxRows];
-
-        for (var column = 0; column < _maxColumns; column++)
-        for (var row = 0; row < _maxRows; row++)
+        var queue = new PriorityQueue<Point, int>();
+        var calculatedGrid = new Dictionary<Point, int>
         {
-            tempGrid[column, row] = int.MaxValue;
-            visited[column, row] = false;
-        }
+            [startPoint] = 0
+        };
 
-        List<Cell> queue = new();
-
-        tempGrid[0, 0] = grid[0, 0];
-
-        queue.Add(new Cell(0, 0, grid[0, 0]));
+        queue.Enqueue(startPoint, 0);
 
         while (queue.Count > 0)
         {
-            var cell = queue.First();
-            queue.Remove(cell);
-            var column = cell.Column;
-            var row = cell.Row;
+            var currentPoint = queue.Dequeue();
 
-            if (visited[row, column])
-                continue;
-
-            visited[row, column] = true;
-
-            foreach (var (nextColumn, nextRow) in _offsets
-                         .Select(x => (X: x.X + column, Y: x.Y + row))
-                         .Where(x => GridHelper.IsValidPoint(x.X, x.Y, _maxColumns, _maxRows)))
+            foreach (var nextPoint in GetNeighbours(currentPoint))
             {
-                tempGrid[nextRow, nextColumn] = Math.Min(tempGrid[nextRow, nextColumn], tempGrid[row, column] + _grid[nextRow, nextColumn]);
-                queue.Add(new Cell(nextColumn, nextRow, tempGrid[nextRow, nextColumn]));
+                if (!grid.ContainsKey(nextPoint) || calculatedGrid.ContainsKey(nextPoint))
+                    continue;
+
+                var totalRisk = calculatedGrid[currentPoint] + grid[nextPoint];
+                calculatedGrid[nextPoint] = totalRisk;
+                if (nextPoint == endPoint)
+                    break;
+
+                queue.Enqueue(nextPoint, totalRisk);
             }
         }
 
-        return tempGrid[_maxRows - 1, _maxColumns - 1] - tempGrid[0, 0];
+        return calculatedGrid[endPoint];
+    }
+
+    private Dictionary<Point, int> EnlargeGrid(Dictionary<Point, int> grid)
+    {
+        var (columnCount, rowCount) = (grid.Keys.MaxBy(p => p.X)!.X + 1, grid.Keys.MaxBy(p => p.Y)!.Y + 1);
+
+        Dictionary<Point, int> enlargedGrid = new();
+        
+        foreach(var column in Enumerable.Range(0, rowCount * 5))
+        foreach (var row in Enumerable.Range(0, columnCount * 5))
+        {
+            var cellY = row % rowCount;
+            var cellX = column % columnCount;
+            var cellRiskLevel = grid[new Point(cellX, cellY)];
+            var cellDistance = (row / rowCount) + (column / rowCount);
+            var riskLevel = (cellRiskLevel + cellDistance - 1) % 9 + 1;
+            enlargedGrid.Add(new Point(column, row), riskLevel);
+        }
+
+        return enlargedGrid;
+    }
+    
+    IEnumerable<Point> GetNeighbours(Point point) =>
+        new[]
+        {
+            point with {Y = point.Y + 1},
+            point with {Y = point.Y - 1},
+            point with {X = point.X + 1},
+            point with {X = point.X - 1},
+        };
+
+    public sealed override Dictionary<Point, int> ParseInput(string[] lines)
+    {
+        var grid = new Dictionary<Point, int>();
+        foreach (var y in Enumerable.Range(0, lines[0].Length))
+        foreach (var x in Enumerable.Range(0, lines.Length))
+            grid.Add(new Point(x, y), lines[x][y] - '0');
+
+        return grid;
     }
 }
