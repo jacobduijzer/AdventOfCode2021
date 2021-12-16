@@ -5,7 +5,7 @@ namespace AdventOfCode.Core.Puzzles.Day05
     public class Solution : PuzzleBase<IEnumerable<Line>>
     {
         public Solution(string inputFile) =>
-            Input = ParseInput(InputHelper.ReadLinesFromFile(inputFile));
+            Input = ParseInput(inputFile);
 
         public override object SolvePart1()
         {
@@ -48,10 +48,11 @@ namespace AdventOfCode.Core.Puzzles.Day05
             return map;
         }
 
-        public sealed override IEnumerable<Line> ParseInput(string[] lines) => lines
-            .Select(x => x.Split(" -> "))
-            .Select(CreateLine); 
-        
+        public sealed override IEnumerable<Line> ParseInput(string inputFile) =>
+            InputHelper.ReadLinesFromFile(inputFile)
+                .Select(x => x.Split(" -> "))
+                .Select(CreateLine);
+
         private Line CreateLine(string[] input)
         {
             var point1 = new Point(int.Parse(input[0].Split(',')[0]), int.Parse(input[0].Split(',')[1]));

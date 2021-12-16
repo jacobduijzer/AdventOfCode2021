@@ -4,8 +4,8 @@ namespace AdventOfCode.Core.Puzzles.Day11;
 
 public class Solution : PuzzleBase<Octopus[,]>
 {
-    public readonly int MaxRows;
-    public readonly int MaxColumns;
+    public int MaxRows;
+    public int MaxColumns;
 
     private readonly List<(int X, int Y)> _offsets = new() 
     {
@@ -16,12 +16,7 @@ public class Solution : PuzzleBase<Octopus[,]>
 
     public Solution(string inputFile)
     {
-        var lines = InputHelper.ReadLinesFromFile(inputFile);
-
-        MaxRows = lines.Length;
-        MaxColumns = lines[0].Length;
-
-        Input = ParseInput(lines);
+        Input = ParseInput(inputFile);
     }
 
     public override object SolvePart1()
@@ -92,8 +87,11 @@ public class Solution : PuzzleBase<Octopus[,]>
         }
     }
 
-    public sealed override Octopus[,] ParseInput(string[] lines)
+    public sealed override Octopus[,] ParseInput(string inputFile)
     {
+        var lines = InputHelper.ReadLinesFromFile(inputFile);
+        MaxRows = lines.Length;
+        MaxColumns = lines[0].Length;
         var grid = new Octopus[MaxRows, MaxColumns];
         for (var row = 0; row < MaxRows; row++)
         for (var column = 0; column < MaxColumns; column++)

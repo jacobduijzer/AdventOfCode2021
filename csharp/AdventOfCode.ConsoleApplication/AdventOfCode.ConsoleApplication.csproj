@@ -14,6 +14,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Maui.Graphics" Version="6.0.101-preview.10.640" />
       <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="6.0.101-preview.10.640" />
+      <PackageReference Include="Spectre.Console" Version="0.43.0" />
     </ItemGroup>
 
 </Project>

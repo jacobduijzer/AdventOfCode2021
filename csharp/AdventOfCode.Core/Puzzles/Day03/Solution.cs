@@ -6,7 +6,7 @@ public class Solution : PuzzleBase<Dictionary<(int Column, int Number), int>>
 {
     public Solution(string inputFile)
     {
-        Input = ParseInput(File.ReadAllLines(inputFile));
+        Input = ParseInput(inputFile);
     }
 
     public override object SolvePart1()
@@ -23,8 +23,9 @@ public class Solution : PuzzleBase<Dictionary<(int Column, int Number), int>>
         throw new NotImplementedException();
     }
 
-    public sealed override Dictionary<(int Column, int Number), int> ParseInput(string[] lines)
+    public sealed override Dictionary<(int Column, int Number), int> ParseInput(string inputFile)
     {
+        var lines = File.ReadAllLines(inputFile);
         Dictionary<(int Column, int Number), int> grid = new();
         for (var column = 0; column < lines[0].Length; column++)
         {

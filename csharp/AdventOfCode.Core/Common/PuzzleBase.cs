@@ -10,5 +10,5 @@ public abstract class PuzzleBase<TInputType> : PuzzleBase
 {
     protected TInputType Input { get; set; }
     
-    public abstract TInputType ParseInput(string[] lines);
+    public abstract TInputType ParseInput(string inputFile);
 }

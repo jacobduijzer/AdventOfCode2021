@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using AdventOfCode.Core.Common;
 using AdventOfCode.Core.Puzzles.Day15;
 using Xunit;
 
@@ -18,7 +20,7 @@ public class Day15Should
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(expectedResult, result);
+        Assert.Equal(expectedResult, ((PathFinderResult)result).LowestCost);
     }
     
     [Theory]
@@ -34,6 +36,6 @@ public class Day15Should
 
         // ASSERT
         Assert.NotNull(result);
-        Assert.Equal(expectedResult, result);
+        Assert.Equal(expectedResult, ((PathFinderResult)result).LowestCost);
     }
 }
