@@ -2,21 +2,16 @@ using AdventOfCode.Core.Common;
 
 namespace AdventOfCode.Core.Puzzles.Day08;
 
-public class Solution : PuzzleBase
+public class Solution : PuzzleBase<IEnumerable<Solution.Entry>>
 {
-    private readonly IEnumerable<Entry> _entries;
-
-    record Entry(List<string> Signals, List<string> Outputs);
-
-    public Solution(string inputFile)
+    public Solution(string inputFile) : base(inputFile)
     {
-        _entries = GetEntries(inputFile);
     }
 
     public override object SolvePart1()
     {
         int[] lengths = {2, 3, 4, 7};
-        var count = _entries
+        var count = Input
             .SelectMany(x => x.Outputs)
             .Count(y => lengths.Contains(y.Length));
 
@@ -25,20 +20,11 @@ public class Solution : PuzzleBase
 
     public override object SolvePart2()
     {
-        var input = _entries
+        var input = Input 
             .Select(MapNumberToSignal)
             .Sum();
         return input;
     }
-
-    private static IEnumerable<Entry> GetEntries(string inputFile) =>
-        InputHelper.ReadLinesFromFile(inputFile)
-            .ToList()
-            .Select(x => x.Split('|', StringSplitOptions.TrimEntries))
-            .Select(y => new Entry(
-                y[0].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList(),
-                y[1].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList()))
-            .ToList();
 
     private int MapNumberToSignal(Entry entry)
     {
@@ -106,5 +92,16 @@ public class Solution : PuzzleBase
 
         return map;
     }
+    
+    public record Entry(List<string> Signals, List<string> Outputs);
+
+    public override IEnumerable<Entry> ParseInput(string inputFile) =>
+        DataReader.ReadLinesFromFile(inputFile)
+            .ToList()
+            .Select(x => x.Split('|', StringSplitOptions.TrimEntries))
+            .Select(y => new Entry(
+                y[0].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList(),
+                y[1].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList()))
+            .ToList();
 }
 

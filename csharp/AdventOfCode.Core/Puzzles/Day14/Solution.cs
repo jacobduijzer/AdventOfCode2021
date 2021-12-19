@@ -15,7 +15,7 @@ public class Solution : PuzzleBase
 
     public Solution(string inputFile)
     {
-        var input = InputHelper.ReadLinesFromFile(inputFile);
+        var input = DataReader.ReadLinesFromFile(inputFile);
 
         _startString = input[0];
 

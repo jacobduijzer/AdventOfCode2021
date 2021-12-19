@@ -14,9 +14,8 @@ public class Solution : PuzzleBase<Octopus[,]>
         (1, -1), (1, 0), (1, 1)
     };
 
-    public Solution(string inputFile)
+    public Solution(string inputFile) : base(inputFile)
     {
-        Input = ParseInput(inputFile);
     }
 
     public override object SolvePart1()
@@ -89,7 +88,7 @@ public class Solution : PuzzleBase<Octopus[,]>
 
     public sealed override Octopus[,] ParseInput(string inputFile)
     {
-        var lines = InputHelper.ReadLinesFromFile(inputFile);
+        var lines = DataReader.ReadLinesFromFile(inputFile);
         MaxRows = lines.Length;
         MaxColumns = lines[0].Length;
         var grid = new Octopus[MaxRows, MaxColumns];

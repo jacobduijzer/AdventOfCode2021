@@ -2,24 +2,14 @@ using AdventOfCode.Core.Common;
 
 namespace AdventOfCode.Core.Puzzles.Day09;
 
-public class Solution : PuzzleBase
+public class Solution : PuzzleBase<int[,]>
 {
-    private readonly int[,] _input;
-    private readonly int _max_y;
-    private readonly int _max_x;
-
     private readonly List<(int X, int Y)> _offsets = new List<(int X, int Y)> {(-1, 0), (0, 1), (0, -1), (1, 0)};
+    private int _maxRows;
+    private int _maxColumns;
 
-    public Solution(string inputFile)
+    public Solution(string inputFile) : base(inputFile)
     {
-        var lines = InputHelper.ReadLinesFromFile(inputFile);
-        _max_y = lines.Length;
-        _max_x = lines[0].Length;
-
-        _input = new int[_max_y, _max_x];
-        for (var y = 0; y < _max_y; y++)
-        for (var x = 0; x < _max_x; x++)
-            _input[y, x] = int.Parse(lines[y][x].ToString());
     }
 
     public override object SolvePart1()
@@ -47,7 +37,7 @@ public class Solution : PuzzleBase
             queue.RemoveAt(0);
             var neighbours = _offsets
                 .Select(x => (X: x.X + current.X, Y: x.Y + current.Y))
-                .Where(x => IsValidPoint(x.X, x.Y) && _input[x.Y, x.X] != 9 && !visited.Contains(x) && !queue.Contains(x)).ToList();
+                .Where(x => GridHelper.IsValidPoint(x.X, x.Y, _maxColumns, _maxRows) && Input[x.Y, x.X] != 9 && !visited.Contains(x) && !queue.Contains(x)).ToList();
             queue = queue.Concat(neighbours).ToList();
         }
 
@@ -57,22 +47,34 @@ public class Solution : PuzzleBase
     private Dictionary<(int X, int Y), int> FindLowPoints()
     {
         Dictionary<(int X, int Y), int> numbers = new();
-
-        for (var y = 0; y < _max_y; y++)
-        for (var x = 0; x < _max_x; x++)
+    
+        for (var row = 0; row < _maxRows; row++)
+        for (var column = 0; column < _maxColumns; column++)
         {
             var neighbours = _offsets
-                .Select(point => (X: point.X + x, Y: point.Y + y))
-                .Where(newPoint => IsValidPoint(newPoint.X, newPoint.Y))
+                .Select(point => (X: point.X + column, Y: point.Y + row))
+                .Where(newPoint => GridHelper.IsValidPoint(newPoint.X, newPoint.Y, _maxColumns, _maxRows))
                 .ToList();
             
-            if (neighbours.All(point => _input[point.Y, point.X] > _input[y, x]))
-                numbers.Add((x, y), _input[y, x]);
+            if (neighbours.All(point => Input[point.Y, point.X] > Input[row, column]))
+                numbers.Add((column, row), Input[row, column]);
         }
 
         return numbers;
     }
 
-    private bool IsValidPoint(int x, int y) =>
-        0 <= x && x < _max_x && 0 <= y && y < _max_y;
+    public override int[,] ParseInput(string inputFile)
+    {
+        var lines = DataReader.ReadLinesFromFile(inputFile);
+        
+        _maxRows  = lines.Length;
+        _maxColumns = lines[0].Length; 
+
+        var input = new int[_maxRows, _maxColumns];
+        for (var row = 0; row < _maxRows; row++)
+        for (var column = 0; column < _maxColumns; column++)
+            input[row, column] = int.Parse(lines[row][column].ToString());
+
+        return input;
+    }
 }

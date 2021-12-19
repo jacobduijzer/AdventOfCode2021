@@ -9,5 +9,6 @@ using Solution = AdventOfCode.Core.Puzzles.Day14.Solution;
 // var outputText = day14.SolvePart2();
 // Console.WriteLine(outputText);
 
+// var day15 = new Day15("Input/day15small.txt");
 var day15 = new Day15("Input/day15.txt");
-day15.Run();
+await day15.Run();

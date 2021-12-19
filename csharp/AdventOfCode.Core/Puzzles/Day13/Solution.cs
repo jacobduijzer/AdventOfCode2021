@@ -15,7 +15,7 @@ public class Solution : PuzzleBase
 
     public Solution(string inputFile)
     {
-        _grid = new Grid(InputHelper.ReadLinesFromFile(inputFile));
+        _grid = new Grid(DataReader.ReadLinesFromFile(inputFile));
     }
 
     public override object SolvePart1()

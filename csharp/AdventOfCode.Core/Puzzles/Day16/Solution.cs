@@ -4,8 +4,9 @@ namespace AdventOfCode.Core.Puzzles.Day16;
 
 public class Solution : PuzzleBase<Decoder>
 {
-    public Solution(string inputFile) =>
-        Input = ParseInput(inputFile);
+    public Solution(string inputFile) : base(inputFile)
+    {
+    }
 
     public override object SolvePart1() =>
         CountVersions(Input.DecodeTransMission());
@@ -36,9 +37,7 @@ public class Solution : PuzzleBase<Decoder>
         OperationType.Product => package.SubPackages.Select(HandlePackage).Aggregate((i, j) => i * j),
         OperationType.Minimum => package.SubPackages.Min(HandlePackage),
         OperationType.Maximum => package.SubPackages.Max(HandlePackage),
-        OperationType.GreaterThan => HandlePackage(package.SubPackages[0]) > HandlePackage(package.SubPackages[1])
-            ? 1
-            : 0,
+        OperationType.GreaterThan => HandlePackage(package.SubPackages[0]) > HandlePackage(package.SubPackages[1]) ? 1 : 0,
         OperationType.LessThan => HandlePackage(package.SubPackages[0]) < HandlePackage(package.SubPackages[1]) ? 1 : 0,
         OperationType.Equal => HandlePackage(package.SubPackages[0]) == HandlePackage(package.SubPackages[1]) ? 1 : 0,
         _ => throw new NotSupportedException($"Package of type {package.GetType()} can not be executed")

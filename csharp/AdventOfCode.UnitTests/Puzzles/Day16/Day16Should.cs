@@ -23,7 +23,7 @@ public class Day16Should
     
     [Theory]
     [InlineData($"Input/{DayFile}", 819324480368)]
-    public void SolvePart2(string inputFile, int expectedResult)
+    public void SolvePart2(string inputFile, long expectedResult)
     {
         // ARRANGE
         Solution day16 = new (inputFile);

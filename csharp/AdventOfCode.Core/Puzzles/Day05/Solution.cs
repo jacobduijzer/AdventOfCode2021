@@ -4,8 +4,9 @@ namespace AdventOfCode.Core.Puzzles.Day05
 {
     public class Solution : PuzzleBase<IEnumerable<Line>>
     {
-        public Solution(string inputFile) =>
-            Input = ParseInput(inputFile);
+        public Solution(string inputFile) : base(inputFile)
+        {
+        }
 
         public override object SolvePart1()
         {
@@ -49,7 +50,7 @@ namespace AdventOfCode.Core.Puzzles.Day05
         }
 
         public sealed override IEnumerable<Line> ParseInput(string inputFile) =>
-            InputHelper.ReadLinesFromFile(inputFile)
+            DataReader.ReadLinesFromFile(inputFile)
                 .Select(x => x.Split(" -> "))
                 .Select(CreateLine);
 

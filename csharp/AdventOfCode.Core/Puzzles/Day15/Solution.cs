@@ -4,8 +4,9 @@ namespace AdventOfCode.Core.Puzzles.Day15;
 
 public class Solution : PuzzleBase<Dictionary<Point, int>>
 {
-    public Solution(string inputFile) => 
-        Input = ParseInput(inputFile);
+    public Solution(string inputFile) : base(inputFile)
+    {
+    }
 
     public override object SolvePart1()
     {
@@ -166,7 +167,7 @@ public class Solution : PuzzleBase<Dictionary<Point, int>>
 
     public sealed override Dictionary<Point, int> ParseInput(string inputFile)
     {
-        var lines = InputHelper.ReadLinesFromFile(inputFile);
+        var lines = DataReader.ReadLinesFromFile(inputFile);
         var grid = new Dictionary<Point, int>();
         foreach (var y in Enumerable.Range(0, lines[0].Length))
         foreach (var x in Enumerable.Range(0, lines.Length))

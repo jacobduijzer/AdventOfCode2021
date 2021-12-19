@@ -9,7 +9,7 @@ public class Solution : PuzzleBase
 
     public Solution(string inputFile)
     {
-        var input = InputHelper.ReadLinesFromFile(inputFile).ToList();
+        var input = DataReader.ReadLinesFromFile(inputFile).ToList();
         _map = input
             .SelectMany(line => line.Split("-"))
             .Distinct()
