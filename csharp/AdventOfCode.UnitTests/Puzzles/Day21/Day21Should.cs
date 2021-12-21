@@ -20,4 +20,20 @@ public class Day21Should
         Assert.NotNull(result);
         Assert.Equal(expectedResult, result);
     } 
+    
+    [Theory]
+    [InlineData("TestInput/day21.txt", 444356092776315)]
+    [InlineData("Input/day21.txt", 193753136998081)]
+    public void SolvePart2(string inputFile, long expectedResult)
+    {
+        // ARRANGE
+        Solution day21 = new (inputFile);
+
+        // ACT
+        var result = day21.SolvePart2();
+
+        // ASSERT
+        Assert.NotNull(result);
+        Assert.Equal(expectedResult, result);
+    } 
 }

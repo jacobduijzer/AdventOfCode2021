@@ -55,7 +55,7 @@ public class Solution : PuzzleBase<Octopus[,]>
         return step;
     }
 
-    private void IncrementEnergyLevels(Queue<(int X, int Y)> queue, ISet<(int X, int Y)> flashedOctopi)
+    public void IncrementEnergyLevels(Queue<(int X, int Y)> queue, ISet<(int X, int Y)> flashedOctopi)
     {
         for (var row = 0; row < MaxRows; row++)
         for (var column = 0; column < MaxColumns; column++)
@@ -66,7 +66,7 @@ public class Solution : PuzzleBase<Octopus[,]>
             }
     }
     
-    private void HandleFlashes(Queue<(int X, int Y)> queue, ISet<(int X, int Y)> flashedOctopi)
+    public void HandleFlashes(Queue<(int X, int Y)> queue, ISet<(int X, int Y)> flashedOctopi)
     {
         while (queue.Count > 0)
         {

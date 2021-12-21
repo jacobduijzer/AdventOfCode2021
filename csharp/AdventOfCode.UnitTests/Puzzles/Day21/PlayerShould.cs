@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Transactions;
 using AdventOfCode.Core.Puzzles.Day21;
 using Xunit;
 
@@ -25,7 +27,7 @@ public class PlayerShould
         Player player = new(startPosition);
 
         // ACT
-        player.Move(rolls);
+        player = rolls.Aggregate(player, (current, roll) => current.Move(roll));
 
         // ASSERT
         Assert.Equal(expectedPosition, player.CurrentPosition);
@@ -39,8 +41,7 @@ public class PlayerShould
         Player player = new(startPosition);
 
         // ACT
-        foreach(var roll in rolls)
-            player.Move(roll);
+        player = rolls.Aggregate(player, (current, roll) => current.Move(roll.Sum()));
 
         // ASSERT
         Assert.Equal(expectedScore, player.Score);

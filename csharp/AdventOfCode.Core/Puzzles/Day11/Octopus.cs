@@ -2,15 +2,15 @@ namespace AdventOfCode.Core.Puzzles.Day11;
 
 public class Octopus
 {
-    private int _level = 0;
+    public int Level = 0;
 
-    public Octopus(int startValue) => _level = startValue;
+    public Octopus(int startValue) => Level = startValue;
 
     public int IncreaseLevel()
     {
-        _level++;
-        return _level;
+        Level++;
+        return Level;
     }
 
-    public void Reset() => _level = 0;
+    public void Reset() => Level = 0;
 }

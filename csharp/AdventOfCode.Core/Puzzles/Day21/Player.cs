@@ -1,22 +1,13 @@
 namespace AdventOfCode.Core.Puzzles.Day21;
 
-public class Player
+public record Player(int CurrentPosition, int Score = 0)
 {
-    public int CurrentPosition => _currentPosition;
-    public int Score => _score;
-    
-    private int _currentPosition;
-    private int _score = 0;
+    public Player Move(int positions)
+    {
+        var newPosition = ((CurrentPosition + positions - 1) % 10) + 1;
+        var newScore = Score + newPosition;
+        return new Player(newPosition, newScore);
+    }
 
-   public Player(int startPosition)
-   {
-       _currentPosition = startPosition;
-   }
-   
-   public void Move(int[] numbers)
-   {
-       var newPosition = ((_currentPosition + numbers.Sum() - 1) % 10) + 1;
-       _score = Score + newPosition;
-       _currentPosition = newPosition;
-   }
+    public bool HasWon(int max) => Score >= max;
 }
