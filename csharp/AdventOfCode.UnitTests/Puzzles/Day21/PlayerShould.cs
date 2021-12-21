@@ -10,7 +10,7 @@ public class PlayerShould
     [InlineData(1)]
     public void StartWithCorrectStartPosition(int startPosition)
     {
-        Player player = new(1, startPosition);
+        Player player = new(startPosition);
 
         Assert.Equal(startPosition, player.CurrentPosition);
     }
@@ -22,7 +22,7 @@ public class PlayerShould
     public void MoveToCorrectPosition(int startPosition, int[] rolls, int expectedPosition)
     {
         // ARRANGE
-        Player player = new(1, startPosition);
+        Player player = new(startPosition);
 
         // ACT
         player.Move(rolls);
@@ -36,7 +36,7 @@ public class PlayerShould
     public void Score(int startPosition, List<int[]> rolls, int expectedScore)
     {
         // ARRANGE
-        Player player = new(1, startPosition);
+        Player player = new(startPosition);
 
         // ACT
         foreach(var roll in rolls)
