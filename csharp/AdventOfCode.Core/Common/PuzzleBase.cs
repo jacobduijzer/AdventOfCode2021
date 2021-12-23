@@ -8,7 +8,7 @@ public abstract class PuzzleBase
 
 public abstract class PuzzleBase<TInputType> : PuzzleBase
 {
-    protected TInputType Input { get; private set; }
+    public TInputType Input { get; private set; }
 
     public abstract TInputType ParseInput(string inputFile);
     
